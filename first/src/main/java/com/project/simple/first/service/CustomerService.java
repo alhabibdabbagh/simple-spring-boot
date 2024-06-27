@@ -7,4 +7,6 @@ import java.util.UUID;
 public interface CustomerService {
 
     CustomerModel getCustomerById(UUID customerId);
+
+    CustomerModel saveNewCustomer(CustomerModel customerModel);
 }

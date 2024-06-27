@@ -24,6 +24,20 @@ public class CustomerController {
 
 
     }
+    @PutMapping({"/{customerId}"})
+    public ResponseEntity updateCustomer( @PathVariable("customerId") UUID customerId,
+                                          @RequestBody CustomerModel customerModel){
+        customerService.updateCustomer(customerId,customerModel);
+
+        return new  ResponseEntity(HttpStatus.NO_CONTENT);
+
+    }
+    @DeleteMapping({"/{customerId}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCustomer(@PathVariable("customerId") UUID customerId){
+        customerService.deleteCustomer(customerId);
+//      return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
     @PostMapping
     public ResponseEntity createCustomer(@RequestBody CustomerModel customerModel) {
         customerModel=customerService.saveNewCustomer(customerModel);
@@ -31,4 +45,5 @@ public class CustomerController {
         headers.set("Location","http://localhost:8080/api/v1/customer/"+customerModel.getId().toString());
         return new ResponseEntity<>(headers,HttpStatus.CREATED);
     }
+
 }

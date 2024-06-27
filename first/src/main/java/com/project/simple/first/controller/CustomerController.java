@@ -2,7 +2,6 @@ package com.project.simple.first.controller;
 
 import com.project.simple.first.model.CustomerModel;
 import com.project.simple.first.service.CustomerService;
-import com.sun.net.httpserver.Headers;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +25,7 @@ public class CustomerController {
 
     }
     @PostMapping
-    public ResponseEntity createCustomer( CustomerModel customerModel) {
+    public ResponseEntity createCustomer(@RequestBody CustomerModel customerModel) {
         customerModel=customerService.saveNewCustomer(customerModel);
         HttpHeaders headers=new HttpHeaders();
         headers.set("Location","http://localhost:8080/api/v1/customer/"+customerModel.getId().toString());

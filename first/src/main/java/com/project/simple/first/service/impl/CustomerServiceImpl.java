@@ -19,7 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerModel saveNewCustomer(@NotNull CustomerModel customerModel) {
+    public CustomerModel saveNewCustomer( CustomerModel customerModel) {
     return CustomerModel.builder()
             .id(UUID.randomUUID())
             .build();

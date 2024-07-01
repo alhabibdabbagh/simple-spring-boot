@@ -1,4 +1,4 @@
-package com.project.simple.first.controller;
+package com.project.simple.first.web.controller;
 
 import com.project.simple.first.model.CustomerModel;
 import com.project.simple.first.service.CustomerService;
@@ -42,7 +42,7 @@ public class CustomerController {
     public ResponseEntity createCustomer(@RequestBody CustomerModel customerModel) {
         customerModel=customerService.saveNewCustomer(customerModel);
         HttpHeaders headers=new HttpHeaders();
-        headers.set("Location","http://localhost:8080/api/v1/customer/"+customerModel.getId().toString());
+        headers.set("Location","http://localhost:8080/api/v1/customer/"+customerModel);
         return new ResponseEntity<>(headers,HttpStatus.CREATED);
     }
 

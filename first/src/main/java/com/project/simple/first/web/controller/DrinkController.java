@@ -1,4 +1,4 @@
-package com.project.simple.first.controller;
+package com.project.simple.first.web.controller;
 
 import com.project.simple.first.model.DrinkModel;
 import com.project.simple.first.service.DrinkService;

@@ -13,3 +13,4 @@ com\project\simple\first\FirstApplication.class
 com\project\simple\first\mapper\CustomerConverterImpl.class
 com\project\simple\first\model\CustomerModel$CustomerModelBuilder.class
 com\project\simple\first\web\controller\CustomerController.class
+com\project\simple\first\mapper\DateMapper.class

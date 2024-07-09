@@ -5,15 +5,19 @@ import com.project.simple.first.model.CustomerDTOModel.CustomerDTOModelBuilder;
 import com.project.simple.first.model.CustomerModel;
 import com.project.simple.first.model.CustomerModel.CustomerModelBuilder;
 import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-08T13:30:22+0300",
+    date = "2024-07-09T11:27:26+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.11 (Oracle Corporation)"
 )
 @Component
 public class CustomerConverterImpl implements CustomerConverter {
+
+    @Autowired
+    private DateMapper dateMapper;
 
     @Override
     public CustomerModel customerDTOToCustomer(CustomerDTOModel customerDTOModel) {
@@ -25,6 +29,8 @@ public class CustomerConverterImpl implements CustomerConverter {
 
         customerModel.id( customerDTOModel.getId() );
         customerModel.name( customerDTOModel.getName() );
+        customerModel.createdDate( dateMapper.asTimestamp( customerDTOModel.getCreatedDate() ) );
+        customerModel.lastUpdateDate( dateMapper.asTimestamp( customerDTOModel.getLastUpdateDate() ) );
 
         return customerModel.build();
     }
@@ -39,6 +45,8 @@ public class CustomerConverterImpl implements CustomerConverter {
 
         customerDTOModel.id( customer.getId() );
         customerDTOModel.name( customer.getName() );
+        customerDTOModel.createdDate( dateMapper.asOffsetDateTime( customer.getCreatedDate() ) );
+        customerDTOModel.lastUpdateDate( dateMapper.asOffsetDateTime( customer.getLastUpdateDate() ) );
 
         return customerDTOModel.build();
     }

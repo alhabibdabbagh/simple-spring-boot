@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -14,5 +16,7 @@ import java.util.UUID;
 public class CustomerModel {
     private UUID id;
     private String name;
+    private Timestamp createdDate; // sql library
+    private Timestamp lastUpdateDate;
 
 }
